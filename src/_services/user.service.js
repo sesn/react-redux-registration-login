@@ -77,7 +77,7 @@ function _delete(id) {
     method: 'DELETE',
     headers: authHeader()
   };
-  return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(handleResponse);
+  return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
@@ -86,7 +86,7 @@ function handleResponse(response) {
       if(response.status === 401) {
         // auto logout if 401 response returned from api
         logout();
-        location.reload(true);
+        window.location.reload(true);
       }
 
       const error = (data && data.error) || response.statusText;

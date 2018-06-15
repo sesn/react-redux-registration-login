@@ -28,9 +28,9 @@ function login(username, password) {
       )
   };
 
-  request = user => ({ type: userConstants.LOGIN_REQUEST, user });
-  success = user => ({type: userConstants.LOGIN_SUCESSS, user });
-  failure = error => ({ type: userConstants.LOGIN_FAILURE, error })
+  let request = user => ({ type: userConstants.LOGIN_REQUEST, user });
+  let success = user => ({type: userConstants.LOGIN_SUCESSS, user });
+  let failure = error => ({ type: userConstants.LOGIN_FAILURE, error })
 }
 
 function logout() {
@@ -56,9 +56,9 @@ function register(user) {
       );
   };
 
-  request = user => ({ type: userConstants.REGISTER_REQUEST, user })
-  success = user => ({ type: userConstants.REGISTER_SUCCESS, user })
-  failure = error => ({ type: userConstants.REGISTER_FAILURE, error })
+  let request = user => ({ type: userConstants.REGISTER_REQUEST, user })
+  let success = user => ({ type: userConstants.REGISTER_SUCCESS, user })
+  let failure = error => ({ type: userConstants.REGISTER_FAILURE, error })
 }
 
 
@@ -73,9 +73,9 @@ function getAll() {
       )
   }
 
-  request = () => ({ type: userConstants.GETALL_REQUEST });
-  success = users => ({ type: userConstants.GETALL_SUCCESS, users });
-  failure = error => ({ type: userConstants.GETALL_FAILURE, error });
+  let request = () => ({ type: userConstants.GETALL_REQUEST });
+  let success = users => ({ type: userConstants.GETALL_SUCCESS, users });
+  let failure = error => ({ type: userConstants.GETALL_FAILURE, error });
 }
 
 function _delete(id) {
@@ -91,7 +91,7 @@ function _delete(id) {
       )
   };
 
-  request = id => ({ type: userConstants.DELETE_REQUEST, id });
-  success = id => ({ type: userConstants.DELETE_SUCCESS, id });
-  failure = (id, error) => ({ type: userConstants.DELETE_FAILURE, id, error });
+  let request = id => ({ type: userConstants.DELETE_REQUEST, id });
+  let success = id => ({ type: userConstants.DELETE_SUCCESS, id });
+  let failure = (id, error) => ({ type: userConstants.DELETE_FAILURE, id, error });
 }

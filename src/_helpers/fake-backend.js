@@ -2,7 +2,7 @@
 // If not present, assign empty array to the users
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
-export function configureBackend() {
+export function configureFakeBackend() {
   let realFetch = window.fetch();
   window.fetch = function(url, opts) {
     return new Promise((resolve, reject) => {
