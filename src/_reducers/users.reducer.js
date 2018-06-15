@@ -23,8 +23,8 @@ export function users(state={}, action) {
 
     case userConstants.DELETE_SUCCESS:
       return {
-        items: state.items.filter(user => user.id != action.id)
-      };
+        items: state.items.filter(user => user.id !== action.id)
+    };
 
     case userConstants.DELETE_FAILURE:
       return {

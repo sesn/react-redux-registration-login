@@ -1,6 +1,6 @@
 import { authHeader } from '../_helpers';
 let config = {
-  apiUrl: 'http://localhost:4000'
+  apiUrl: 'http://localhost:3000'
 };
 
 export const userService = {
@@ -60,6 +60,7 @@ function register(user) {
     headers: {...authHeader(), 'Content-Type': 'application/json'},
     body: JSON.stringify(user)
   };
+  console.log('registering');
   return fetch(`${config.apiUrl}/users/register`, requestOptions).then(handleResponse);
 }
 

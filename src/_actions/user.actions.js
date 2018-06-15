@@ -28,9 +28,9 @@ function login(username, password) {
       )
   };
 
-  let request = user => ({ type: userConstants.LOGIN_REQUEST, user });
-  let success = user => ({type: userConstants.LOGIN_SUCESSS, user });
-  let failure = error => ({ type: userConstants.LOGIN_FAILURE, error })
+  function request(user) { return { type: userConstants.LOGIN_REQUEST, user }}
+  function failure(error) { return { type: userConstants.LOGIN_FAILURE, error }}
+  function success(user) { return {type: userConstants.LOGIN_SUCESSS, user } }
 }
 
 function logout() {
@@ -56,9 +56,9 @@ function register(user) {
       );
   };
 
-  let request = user => ({ type: userConstants.REGISTER_REQUEST, user })
-  let success = user => ({ type: userConstants.REGISTER_SUCCESS, user })
-  let failure = error => ({ type: userConstants.REGISTER_FAILURE, error })
+  function request(user) { return { type: userConstants.REGISTER_REQUEST, user }  }
+  function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
+  function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
 
@@ -91,7 +91,7 @@ function _delete(id) {
       )
   };
 
-  let request = id => ({ type: userConstants.DELETE_REQUEST, id });
-  let success = id => ({ type: userConstants.DELETE_SUCCESS, id });
-  let failure = (id, error) => ({ type: userConstants.DELETE_FAILURE, id, error });
+  function request(id) { return { type: userConstants.DELETE_REQUEST, id }};
+  function success(id) { return { type: userConstants.DELETE_SUCCESS, id }}
+  function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
 }

@@ -3,7 +3,7 @@
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 export function configureFakeBackend() {
-  let realFetch = window.fetch();
+  let realFetch = window.fetch;
   window.fetch = function(url, opts) {
     return new Promise((resolve, reject) => {
       // wrap in timeout to simulate server api call
@@ -59,11 +59,11 @@ export function configureFakeBackend() {
         if(url.endsWith('/users/register') && opts.method === 'POST') {
           // get new user object from post body
           let newUser = JSON.parse(opts.body);
-
+          console.log(users);
           // validation
           let duplicateUser = users.filter(user => user.username === newUser.username);
 
-          if(duplicateUser) {
+          if(duplicateUser.length) {
             reject(`username: ${newUser.username} is already taken`);
             return;
           }
