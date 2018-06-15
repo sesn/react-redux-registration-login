@@ -93,5 +93,5 @@ function _delete(id) {
 
   request = id => ({ type: userConstants.DELETE_REQUEST, id });
   success = id => ({ type: userConstants.DELETE_SUCCESS, id });
-  failure = (id, error) =>
+  failure = (id, error) => ({ type: userConstants.DELETE_FAILURE, id, error });
 }
