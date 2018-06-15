@@ -31,7 +31,7 @@ export function configureFakeBackend() {
 
         // get users
         if(url.endsWith('/users') && opts.method === 'GET') {
-          if(opts.header && opts.headers.Authorization === `Bearer fake-jwt-token`) {
+          if(opts.headers && opts.headers.Authorization == 'Bearer fake-jwt-token') {
             resolve({ok: true, json: () => Promise.resolve(users)});
           } else {
             reject('unauthorized');
@@ -40,8 +40,8 @@ export function configureFakeBackend() {
         }
 
         // get user by id
-        if(url.match('/\/users\/\d+$/') && opts.method === 'GET') {
-          if(opts.header && opts.header.Authorization === 'Bearer fake-jwt-token') {
+        if(url.match(/\/users\/\d+$/) && opts.method === 'GET') {
+          if(opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
             // find user by id in users array
             let urlParts = url.split('/');
             let id = parseInt(urlParts[urlParts.length -1]);
@@ -77,14 +77,13 @@ export function configureFakeBackend() {
         }
 
         // delete
-        if(url.match('/\/users\/\d+$/') && opts.method === 'DELETE') {
-          if(opts.header && opts.header.Authorization === 'Bearer fake-jwt-token') {
+        if(url.match(/\/users\/\d+$/) && opts.method === 'DELETE') {
+          if(opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
             // find user by id in users array
             let urlParts = url.split('/');
             let id = parseInt(urlParts[urlParts.length - 1]);
             let filteredUsers = users.filter(user => user.id !== id);
-            localStorage.setItem('users', filteredUsers);
-
+            localStorage.setItem('users', JSON.stringify(filteredUsers));
             // respond 200 ok
             resolve({ok: true, json: ()=>Promise.resolve({})});
           } else {

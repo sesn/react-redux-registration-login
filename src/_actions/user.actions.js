@@ -63,6 +63,10 @@ function register(user) {
 
 
 function getAll() {
+  let request = () => ({ type: userConstants.GETALL_REQUEST });
+  let success = users => ({ type: userConstants.GETALL_SUCCESS, users });
+  let failure = error => ({ type: userConstants.GETALL_FAILURE, error });
+
   return dispatch => {
     dispatch(request());
 
@@ -72,10 +76,6 @@ function getAll() {
         error => dispatch(failure(error))
       )
   }
-
-  let request = () => ({ type: userConstants.GETALL_REQUEST });
-  let success = users => ({ type: userConstants.GETALL_SUCCESS, users });
-  let failure = error => ({ type: userConstants.GETALL_FAILURE, error });
 }
 
 function _delete(id) {
